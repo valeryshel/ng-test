@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Angular Directives</h1>
+  <p>Директивы бывают атрибутные и структурные (которые изменяют структуру). Структурные: ngIf, ngSwitch, ngFor (пишутся со звездочкой) </p>
+  <!-- <p appStyle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, consequatur!</p> -->
+  <!-- <p appStyle="red" fontWeight="bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, consequatur!</p> -->
+  <p appStyle="'red'" [dStyles]="{border: '1px solid pink', borderRadius: '5px'}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, consequatur!</p>
+  <p appStyle="'blue'" [dStyles]="{border: '1px solid orange', borderRadius: '15px'}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, consequatur!</p>
+
+  <p> если мы передаем в параметр строку, то нам необязательно её байндить => [appStyle]="'red'"
+  если объект, то байндить обязательно</p>
+
+  <button class="btn" (click)="isVisible = !isVisible">Toggle</button>
+  <div *ngIf="isVisible" class="wrap">
+    <p>Lorem ipsum dolor sit amet consectetur quasi cum minus officiis quam sunt sint nulla.</p>
+  </div>
+  <p>Вот так на самом деле работает директива ngIf</p>
+  <ng-template [ngIf]="isVisible">
+    <div  class="wrap">
+      <p>Lorem ipsum consectetur adipisicing elit. Ducimus laboriosam architecto tempore?</p>
+    </div>
+  </ng-template>
+  <p>Вот так работает директива if Not</p>
+  <div class="wrap" *appIfnot="!isVisible">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, excepturi.</p>
+  </div>
+  <p>Вот так на самом деле работает директива if Not</p>
+  <ng-template [appIfnot]="!isVisible">
+    <div class="wrap">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, excepturi.</p>
+    </div>
+  </ng-template>
+</div>
